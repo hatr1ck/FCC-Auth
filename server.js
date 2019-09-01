@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 const DataBase = [];
 
 app.get('/', function (req, res) {
-  return res.sendFile(__dirname + '/views/index.html');
+  return res.sendFile(__dirname + '/index.html');
 });
 
 app.post('/register', function (req, res) {
