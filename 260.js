@@ -37,10 +37,13 @@ app.post('/login', function (req, res) {
    if(user){
        bcrypt.compare(password, user.password, (error, result) => {
 
-    //Our callback function in bcrypt.compare() method will give us a boolean value in a variable that we called "result".
-    //Let's create an if/else statement that will depends on that value.
-    //If result is truthy then we can send to the client user info as a template string.
-    //If it's not then we will response with "Incorrect password".
+    /*
+      Our callback function in `bcrypt.compare()` method will give us a boolean value in a variable that we called `result`.
+      Let's create an `if/else` statement that will depends on that value.
+      If result is truthy then we can send to the client user info as a template string.
+      If it's not then we will response with "Incorrect password".
+    */
+
     });
     }
     else{

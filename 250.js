@@ -36,9 +36,12 @@ app.post('/login', function (req, res) {
    if(!user){ 
        return res.send('No such user');
     }
-    //Now after we found our user in database we have to compare provided in login form password with the hashed password that was stored.
-    //For that we can use bcrypt.compare() method, that will take password provided in login form as a first argument,
-    //hashed password from stored user as a second and as a third argument it will take a callback function with error and our comparison response that we call "result".
+    /*
+      Now after we found our user in database we have to compare provided in login form password with the hashed password that was stored.
+      For that we can use `bcrypt.compare()` method, that will take password provided in login form as a first argument,
+      hashed password from stored user as a second and as a third argument it will take a callback function with error and our comparison response that we call "result".
+    */
+
 })
 
 app.listen(port, ()=> {

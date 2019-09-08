@@ -29,7 +29,9 @@ app.post('/register', function (req, res) {
   	res.send(`You're signed in. <br /> username: ${username}<br /> password: ${password}<br /> hashed password: ${hash}`);
 })
 
-//Now let's add '/login' post route to our server, and provide a callback function with req, res to it.
+/*
+  Now let's add '/login' post route to our server, and provide a callback function with `req`, `res` to it.
+*/
 
 app.listen(port, ()=> {
   console.log(`Your app is listening on port ${port}`);

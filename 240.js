@@ -33,9 +33,13 @@ app.post('/login', function (req, res) {
    const username = req.body.username;
    const password = req.body.password;
    const user = DataBase.find(user => user.username === username)
-   //Now we want to have some response to our client if there is no such user in database.
-   //Create a if statement that will be invoked when we didn't found provided user.
-   //And in that statement return "No such user" as a response message to our client.
+
+   /*
+     Now we want to have some response to our client if there is no such user in database.
+     Create an `if` statement that will be invoked when we didn't found a provided user.
+     And in that statement return "No such user" as a response message to our client.
+  */
+
 })
 
 app.listen(port, ()=> {

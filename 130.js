@@ -16,8 +16,11 @@ app.post('/register', function (req, res) {
   const passwordRepeat  = req.body.passwordRepeat;
 
   if (!username || !password || !passwordRepeat || password !== passwordRepeat) {
-    //In that if statement we want to give a response to our client with the message: "Incorrect credentials.".
-    //We can do that by returning a res.send() method with that message as a string.
+
+/*
+    In that if statement we want to give a response to our client with the message: "Incorrect credentials.".
+    We can do that by returning a `res.send()` method with that message inside.
+*/
   }
 })
 

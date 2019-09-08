@@ -19,11 +19,14 @@ app.post('/register', function (req, res) {
   if (!username || !password || !passwordRepeat || password !== passwordRepeat) {
    return res.send('Incorrect credentials.');
   }
-//After checking credentials with our if statement we want to hash user password.
-//To do that we going to use bcrypt.hash() method that will take three arguments.
-//First argument is password from our input.
-//Second argument is salt, this is something that we have to provide in order to make our hashing more complex and secure, most common value is 10.
-//Third argument is a callback function that will receive for us error message and hashed password, like so: function(error, hash)
+
+  /*
+	After checking credentials with our if statement we want to hash user password.
+	To do that we going to use `bcrypt.hash()` method that will take three arguments.
+	First argument is a password from our input.
+	Second argument is salt, this is something that we have to provide in order to make our hashing more complex and secure, the most common value is `10`.
+	Third argument is a callback function that will receive for us error messages and hashed password, like so: `function(error, hash)`
+  */
 })
 
 app.listen(port, ()=> {

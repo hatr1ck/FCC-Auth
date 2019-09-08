@@ -21,9 +21,11 @@ app.post('/register', function (req, res) {
   }
 
   bcrypt.hash(password, 10, (error, hash) => {
-    //Each of the users will be stored as a separate javascript object with the two keys: username and password.
-    //Earlier  in this series we created a DataBase array, now we can store our user object in it by using Array.push() method.
-    //Remember to store a hashed version of password and not the real one.
+/*
+  Each of the users will be stored as a separate javascript object with the two keys: `username` and `password`.
+  Earlier  in this series we created a `DataBase` array, now we can store our user object in it by using `Array.push()` method.
+  Remember to store a hashed version of password and not the real one.
+*/
   })
 
 })

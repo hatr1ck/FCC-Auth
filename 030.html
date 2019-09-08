@@ -6,10 +6,11 @@
   <body>
 <form action="/register" method="POST">
 
-      <input type="username" name="username" placeholder="Enter your username..."><br />
+      <input name="username" placeholder="Enter your username...">
 
 <!--
-Next in our form we create two inputs for password and for password confirmation. Those will follow similar logic as our username input. For both of those we will have a type attribute set up to "password", and for our names we will have a "password" for the first one, and "passwordRepeat" for the second one. For the placeholders we can say something like "Enter your password..." and "Re-enter your password...".
+Next let's add a new input, this time with `name` attribute set to "password" and a `placeholder` set to "Enter your password...". 
+We also want to display only masked version of the text in that field, to do that you can set the `type` attribute to "password". 
 -->
 </form>
   </body>

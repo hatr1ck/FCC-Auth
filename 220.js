@@ -30,7 +30,9 @@ app.post('/register', function (req, res) {
 })
 
 app.post('/login', function (req, res) {
-  //In our login callback function assign username and password from req.body object to a same name const variables.
+  /*
+    In our login callback function assign username and password from the `req.body` object to a same name `const` variables.
+  */
 })
 
 app.listen(port, ()=> {

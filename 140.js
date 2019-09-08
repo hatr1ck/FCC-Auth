@@ -1,8 +1,11 @@
 const express = require('express'); 
 const app = express();
 const port = 3000;
-//For safety reasons, we want to store encrypted version of the user password. To do that we will use library called bcrypt.
-//Let's declare a const variable on the top of our document to require bcrypt library in our project.
+
+/*
+For safety reasons, we want to store encrypted version of the user password. To do that we will use library called `bcrypt`.
+Let's declare a `const` variable on the top of our document to require `bcrypt` library in our project.
+*/
 
 app.use(express.urlencoded({ extended: true }));
 

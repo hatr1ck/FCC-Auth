@@ -26,8 +26,10 @@ app.post('/register', function (req, res) {
         password:hash
       })
   })
-  	//At the end of our request we want to send back registered user data in order to know that registration was successful.
-    //Use res.send() method to send back a template string with username, password, and hashed password.
+/*
+  At the end of our request we want to send back registered user data in order to know that registration was successful.
+  Use `res.send()` method to send back a template string with `username`, `password`, and `hash`.
+*/
 })
 
 app.listen(port, ()=> {
