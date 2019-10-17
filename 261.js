@@ -17,7 +17,7 @@ app.post('/register', (req, res) => {
   const passwordRepeat  = req.body.passwordRepeat;
 
   if (!username || !password || !passwordRepeat || password !== passwordRepeat) {
-     return res.send('Incorrect credentials.');
+    res.send('Incorrect credentials.');
   }
   else{
   bcrypt.hash(password, 10, (error, hash) => {
@@ -34,13 +34,21 @@ app.post('/login', (req, res) => {
    const username = req.body.username;
    const password = req.body.password;
    const user = DataBase.find(user => user.username === username);
+   
+   if(user){
+      res.send('No such user');
+    }
+    else{
+          bcrypt.compare(password, user.password, (error, result) => {
+               if(result){
+                    res.send(`You're logged in. <br /> username: ${username}<br /> password: ${password}<br /> hashed password: ${user.password}`);
+                    }
+    /*
+         If the `result` value is `false` then we can handle that inside `else` statement and send back 'Incorrect password' as a response in `res.send()` method.
+    */
 
-   /*
-     Now we want to have some response to our client if there is no such user in database.
-     Create an `if` statement that will be invoked when we didn't found a provided user (`user==undefined` or `!user`).
-     And in that statement send back "No such user" as a response message to our client, by using `res.send()`.
-  */
-
+    });
+    }
 })
 
 app.listen(port, ()=> {

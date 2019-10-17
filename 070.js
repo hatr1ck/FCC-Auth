@@ -5,6 +5,7 @@ const port = 3000;
 app.use(express.urlencoded({ extended: true }));
 
 /* 
-Start the server listening for connections with `app.listen()`. Pass in the port and a callback function to notify that the server is listening. 
-The parameters should be ``port, () => console.log(`Review server listening on port ${port}!`)``
+In order to run our server we will use express method that is now stored in our `app` called `listen`
+Start the server by passing our port variable as a parameter to `app.listen()` method
+
 */

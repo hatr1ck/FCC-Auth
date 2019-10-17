@@ -7,45 +7,47 @@ app.use(express.urlencoded({ extended: true }));
 
 const DataBase = [];
 
-app.get('/', function (req, res) {
-  return res.sendFile(__dirname + '../views/index.html');
+app.get('/',  (req, res) => {
+   res.sendFile(__dirname + '../views/index.html');
 });
 
-app.post('/register', function (req, res) {
+app.post('/register',  (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
   const passwordRepeat  = req.body.passwordRepeat;
 
   if (!username || !password || !passwordRepeat || password !== passwordRepeat) {
-   return res.send('Incorrect credentials.');
+   res.send('Incorrect credentials.');
   }
-
+  else{
   bcrypt.hash(password, 10, (error, hash) => {
     DataBase.push({
         username:username,
         password:hash
       })
   
-  	return res.send(`You're signed in. <br /> username: ${username}<br /> password: ${password}<br /> hashed password: ${hash}`);
-})})
+     res.send(`You're signed in. <br /> username: ${username}<br /> password: ${password}<br /> hashed password: ${hash}`);
+     })
+}
+}
 
-app.post('/login', function (req, res) {
+app.post('/login',  (req, res) => {
    const username = req.body.username;
    const password = req.body.password;
-   const user = DataBase.find(user => user.username === username)
+   const user = DataBase.find(user => user.username === username);
  
-   if(user){
-       bcrypt.compare(password, user.password, (error, result) => {
-		if(result){
-      return res.send(`You're logged in. <br /> username: ${username}<br /> password: ${password}<br /> hashed password: ${user.password}`);
-    }
-      else{
-      return res.send('Incorrect password')
-    }
-    });
+    if(!user){
+      res.send('No such user')
     }
     else{
-      return res.send('No such user')
+       bcrypt.compare(password, user.password, (error, result) => {
+	     if(result){
+                res.send(`You're logged in. <br /> username: ${username}<br /> password: ${password}<br /> hashed password: ${user.password}`);
+              }
+         else{
+           res.send('Incorrect password');
+         }
+    });
     }
 })
 

@@ -17,17 +17,18 @@ app.post('/register', function (req, res) {
   const passwordRepeat  = req.body.passwordRepeat;
 
   if (!username || !password || !passwordRepeat || password !== passwordRepeat) {
-   return res.send('Incorrect credentials.');
+   res.send('Incorrect credentials.');
+  }
+  else{
+       bcrypt.hash(password, 10);
   }
 
-  bcrypt.hash(password, 10, (error, hash) => {
-/*
-  Each of the users will be stored as a separate javascript object with the two keys: `username` and `password`.
-  Earlier  in this series we created a `DataBase` array, now we can store our user object in it by using `Array.push()` method.
-  Remember to store only a hashed versions of passwords.
-*/
-  })
-
+  /*
+     And the last part of our hashing is the handling hashed password itself. 
+     We can do that by providing a callback function as a third argument to our `hash` method.
+     That callback cares for us a couple things, first one is `error` and the second one is `hash`.
+     After salt create a callback with two arguments in it: `error` and `hash`.
+  */
 })
 
 app.listen(port, ()=> {

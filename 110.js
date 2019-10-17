@@ -6,11 +6,11 @@ app.use(express.urlencoded({ extended: true }));
 
 const DataBase = [];
 
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-app.post('/register', function (req, res) {
+app.post('/register', (req, res) => {
 /* 
 Earlier in this project we used `express.urlencoded()` method in our app, now thanks to that we can access our user register data through `req.data` object.
 User data from each input field will be stored by their `name` attribute that we provided in html form.

@@ -7,25 +7,23 @@ app.use(express.urlencoded({ extended: true }));
 
 const DataBase = [];
 
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-app.post('/register', function (req, res) {
+app.post('/register', (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
   const passwordRepeat  = req.body.passwordRepeat;
 
   if (!username || !password || !passwordRepeat || password !== passwordRepeat) {
-   return res.send('Incorrect credentials.');
+   res.send('Incorrect credentials.');
   }
 
-  /*
-	After checking credentials with our if statement we want to hash user password.
-	To do that we going to use `bcrypt.hash()` method that will take three arguments.
-	First argument is a password from our input.
-	Second argument is salt, this is something that we have to provide in order to make our hashing more complex and secure, the most common value is `10`.
-	Third argument is a callback function that will receive for us error messages and hashed password, like so: `function(error, hash)`
+  /* 
+     After making sure that user credentials was correct to create an else statement in which we will start from hashing user's password.
+     Hashing the password is needed to store user data in more secure state.
+     Create an else statement and put our user's password that is stored in a variable into `bcrypt.hash()` method to create a hashed version of it.
   */
 })
 

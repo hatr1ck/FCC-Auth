@@ -17,23 +17,19 @@ app.post('/register', (req, res) => {
   const passwordRepeat  = req.body.passwordRepeat;
 
   if (!username || !password || !passwordRepeat || password !== passwordRepeat) {
-   return res.send('Incorrect credentials.');
+   res.send('Incorrect credentials.');
   }
   else{
-  bcrypt.hash(password, 10, (error, hash) => {
-    DataBase.push({
-        username:username,
-        password:hash
-      })
-  })
-       res.send(`You're signed in. <br /> username: ${username}<br /> password: ${password}<br /> hashed password: ${hash}`);
-}
+       bcrypt.hash(password);
+  }
+
+  /*
+     Hashing is not ended on that. Second thing that we have to provide to our `bcrypt.hash()` is salt,
+     this is something that we have to define in order to make our hashing more complex and secure, the most commonly used value is `10`.
+     Put salt value next to `password` inside `hash` mathod.
+  */
 })
 
-/*
-  Now let's add '/login' post route to our server, and provide a callback function with `req`, `res` to it.
-*/
-
-app.listen(port, () => {
+app.listen(port, ()=> {
   console.log(`Your app is listening on port ${port}`);
 });

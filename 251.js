@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 const DataBase = [];
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/views/index.html');
+   res.sendFile(__dirname + '/views/index.html');
 });
 
 app.post('/register', (req, res) => {
@@ -17,7 +17,7 @@ app.post('/register', (req, res) => {
   const passwordRepeat  = req.body.passwordRepeat;
 
   if (!username || !password || !passwordRepeat || password !== passwordRepeat) {
-     return res.send('Incorrect credentials.');
+   res.send('Incorrect credentials.');
   }
   else{
   bcrypt.hash(password, 10, (error, hash) => {
@@ -34,13 +34,17 @@ app.post('/login', (req, res) => {
    const username = req.body.username;
    const password = req.body.password;
    const user = DataBase.find(user => user.username === username);
-
-   /*
-     Now we want to have some response to our client if there is no such user in database.
-     Create an `if` statement that will be invoked when we didn't found a provided user (`user==undefined` or `!user`).
-     And in that statement send back "No such user" as a response message to our client, by using `res.send()`.
-  */
-
+   if(!user){ 
+         res.send('No such user');
+    }
+    else{
+     bcrypt.compare();
+     /*
+     Now we should provide some arguments to our `bcrypt.compare()` method.
+     First argument should be a raw password that we took from `req.body` object, and as a second argument we need to pass a hashed version of it.
+     Pass password from `req.body` and from `user` object from the database to the `bcrypt.compare()` function.
+     */
+    }
 })
 
 app.listen(port, ()=> {
